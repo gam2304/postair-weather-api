@@ -1,0 +1,38 @@
+# This is a Workflow metadata file for defining entity relationships in this workspace.
+# Each workflow defines relations between entities and may include optional behavior/settings.
+# The Paths are relative to the .postman directory (avoid absolute paths).
+# Keep relation entries explicit and avoid duplicate pairs within the same workflow.
+# This file is declarative metadata and does not execute workflows by itself.
+workflows:
+  syncSpecToCollection:
+    - spec: ../postman/specs/PostAir Weather API/postair-openapi-3_1.yaml
+      collection: ../postman/collections/PostAir Weather API
+      options:
+        folderStrategy: Tags
+        syncExamples: false
+        deleteOrphanedRequests: false
+    - spec: >-
+        ../postman/specs/PostAir Weather
+        API/instructor_5u8wl14w3sk0sv0ia7uf70501_public_1773788129_postair-weather-api.yaml
+      collection: ../postman/collections/PostAir Weather API
+      options:
+        syncExamples: false
+        deleteOrphanedRequests: false
+        folderStrategy: Tags
+        includeWebhooks: true
+  syncCollectionToSpec:
+    - spec: ../postman/specs/PostAir Weather API/postair-openapi-3_1.yaml
+      collection: ../postman/collections/PostAir Weather API
+      options:
+        folderStrategy: Tags
+        syncExamples: false
+        deleteOrphanedRequests: false
+    - spec: >-
+        ../postman/specs/PostAir Weather
+        API/instructor_5u8wl14w3sk0sv0ia7uf70501_public_1773788129_postair-weather-api.yaml
+      collection: ../postman/collections/PostAir Weather API
+      options:
+        syncExamples: false
+        deleteOrphanedRequests: false
+        folderStrategy: Tags
+        includeWebhooks: true

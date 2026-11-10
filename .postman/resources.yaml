@@ -1,0 +1,26 @@
+workspace:
+  id: 14e7aa63-3c62-41e2-8c11-ab9d57dc021f
+localResources:
+  specs:
+    - ../api-docs/postair-openapi-3_1.json
+    - ../api-docs/postair-openapi-3_1.yaml
+    - ../postman/specs/PostAir Weather API/postair-openapi-3_1.yaml
+cloudResources:
+  specs:
+    ../api-docs/postair-openapi-3_1.json: 8c2a2560-5051-4d65-a5ac-243b0482959c
+    ../api-docs/postair-openapi-3_1.yaml: 39c34419-3df3-471e-a2ad-0fbd0949fcdd
+    ../postman/specs/PostAir Weather API/instructor_5u8wl14w3sk0sv0ia7uf70501_public_1773788129_postair-weather-api.yaml: db905d64-abc7-4736-9ef8-4b2c3c7211ca
+  collections:
+    ../postman/collections/PostAir Weather API: 54081815-2bdc5440-a39b-40d8-be64-6acc314975df
+  environments:
+    ../postman/environments/Dev Environment.environment.yaml: 54081815-7fdeb79a-55c6-496f-b299-4c6f9fbf5a5f
+  globals:
+    ../postman/globals/workspace.globals.yaml: efc7c639-6f9b-4ec0-882d-f34f00d33c5c
+  documents:
+    ../postman/documents/WORKSPACE-README.md: e5ec188c-05b7-4240-8fa3-3892f6abe138
+resourceNameMappings:
+  specs:
+    - ../postman/specs/PostAir Weather API/postair-openapi-3_1.yaml: PostAir Weather API
+    - ../postman/specs/PostAir Weather API/instructor_5u8wl14w3sk0sv0ia7uf70501_public_1773788129_postair-weather-api.yaml: PostAir Weather API
+    - ../api-docs/postair-openapi-3_1.json: postair-openapi-3_1.json
+    - ../api-docs/postair-openapi-3_1.yaml: postair-openapi-3_1.yaml

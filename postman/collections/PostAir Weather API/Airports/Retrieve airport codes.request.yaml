@@ -1,0 +1,92 @@
+$kind: http-request
+description: Returns a list of airport codes
+url: "{{baseUrl}}/airports?countryName=United States&airportCode=ATL"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: countryName
+    value: United States
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "default": "United States"
+          }
+        }
+      }
+  - key: airportCode
+    value: ATL
+    description: airport code
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "default": "ATL",
+            "minLength": 3,
+            "maxLength": 4,
+            "pattern": "^[A-Z]{3,4}$"
+          }
+        }
+      }
+auth:
+  type: apikey
+  credentials:
+    key: x-api-key
+    value: "{{apiKey}}"
+    in: header
+scripts:
+  - type: afterResponse
+    code: |-
+      // --- Baseline: Status & Performance ---
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response time is under 2000ms", function () {
+          pm.expect(pm.response.responseTime).to.be.below(2000);
+      });
+
+      pm.test("Content-Type is application/json", function () {
+          pm.expect(pm.response.headers.get("Content-Type")).to.include("application/json");
+      });
+
+      // --- Baseline: Response Body Structure ---
+      const responseData = pm.response.json();
+
+      pm.test("Response body is an array", function () {
+          pm.expect(responseData).to.be.an("array");
+      });
+
+      pm.test("Response array has at least one item", function () {
+          pm.expect(responseData.length).to.be.above(0);
+      });
+
+      pm.test("Each item contains top-level field: country", function () {
+          responseData.forEach(function (item) {
+              pm.expect(item).to.have.property("country");
+          });
+      });
+
+      pm.test("Each item contains top-level field: airports", function () {
+          responseData.forEach(function (item) {
+              pm.expect(item).to.have.property("airports");
+              pm.expect(item.airports).to.be.an("array");
+          });
+      });
+
+      pm.test("Each airport contains: code, city, name, latitude, longitude", function () {
+          responseData.forEach(function (item) {
+              item.airports.forEach(function (airport) {
+                  pm.expect(airport).to.have.all.keys("code", "city", "name", "latitude", "longitude");
+              });
+          });
+      });
+    language: text/javascript
+settings: {}
+examples: ./.resources/Retrieve airport codes.resources/examples
+order: 1000

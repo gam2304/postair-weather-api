@@ -1,0 +1,6 @@
+name: Dev Environment
+values:
+  - key: apiKey
+    value: "1234"
+  - key: baseUrl
+    value: https://education.postmanlabs.com/v1/weather
